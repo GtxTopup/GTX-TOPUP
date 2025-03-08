@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Free Fire BD</title>
+  <style>
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: roboto;
+}
+
+/* Responsive Font Sizes */
+html {
+    font-size: 16px; /* Base font size */
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px; /* Even smaller font size for very small devices */
+    }
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 1rem;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+    width: 150px; /* Adjust this value as needed */
+}
+
+header p {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
+/* Recharge Amount Section */
+.slre {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+
+.one {
+    background-color: rgb(225, 68, 24);
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.one p {
+    color: whitesmoke;
+    font-size: 3rem;
+}
+
+.slmet p {
+    font-size: 2rem;
+}
+
+/* Amount Selection */
+.amountli {
+    margin: 1rem;
+}
+
+.amount {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0rem;
+}
+
+.amountp {
+    position: relative;
+    flex: 1 1 calc(50% - 1rem);
+    border: 2px solid rgb(45, 9, 174);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, border 0.3s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.amountp input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+/* Custom Radio Button Circle */
+.amountp label::before {
+    content: "";
+    display: inline-block;
+    width: 30px; /* Larger circle */
+    height: 30px; /* Larger circle */
+    border: 2px solid rgb(9, 241, 79);
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+/* Big and Colorful Tick Mark (Hidden by Default) */
+.amountp label::after {
+    content: "✓";
+    position: absolute;
+    left: 5px; /* Adjust position */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px; /* Larger tick mark */
+    color: rgb(9, 241, 79); /* Green tick mark */
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* When Radio Button is Checked */
+.amountp input[type="radio"]:checked + label::before {
+    background-color: rgb(9, 241, 79); /* Green background */
+}
+
+.amountp input[type="radio"]:checked + label::after {
+    opacity: 1; /* Show tick mark */
+}
+
+/* Hover Effect */
+.amountp:hover {
+    background-color: aqua;
+    border: 4px solid green;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.firp, .secp {
+    font-size: 1.5rem;
+}
+
+/* Account Info Section */
+#in {
+    width: 100%;
+    height: 4rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 3px solid rgb(45, 9, 174);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Payment Method Section */
+.logo2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.border {
+    position: relative;
+    border: 3px solid rgb(45, 9, 174);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: border 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.border input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+/* Custom Radio Button Circle for Payment Options */
+.border label::before {
+    content: "";
+    display: inline-block;
+    width: 30px; /* Larger circle */
+    height: 30px; /* Larger circle */
+    border: 2px solid rgb(9, 241, 79);
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+/* Big and Colorful Tick Mark for Payment Options (Hidden by Default) */
+.border label::after {
+    content: "✓";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px; /* Larger tick mark */
+    color: rgb(9, 241, 79); /* Green tick mark */
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* When Payment Radio Button is Checked */
+.border input[type="radio"]:checked + label::before {
+    background-color: rgb(9, 241, 79); /* Green background */
+}
+
+.border input[type="radio"]:checked + label::after {
+    opacity: 1; /* Show tick mark */
+}
+
+/* Hover Effect for Payment Options */
+.border:hover {
+    border: 3px solid rgb(11, 216, 38);
+}
+
+.border img {
+    max-width: 100%;
+    height: auto;
+    width: 200px; /* Adjust this value as needed */
+}
+
+/* Notification */
+.alt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(240, 16, 16, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    display: none;
+}
+
+.ntf p {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ok-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-info, .footer-social {
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+.footer-bottom {
+    background-color: #222;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+/* Buttons */
+#continue, #vy {
+  /* NEXT Button */
+    width: 90%; /* Set width to 50% */
+    height: 4rem;
+    font-size: 1.5rem;
+    background-color: rgb(225, 68, 24);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 1rem auto; /* Center the button horizontally */
+    cursor: pointer;
+    display: block; /* Ensure it behaves as a block element */
+}
+
+#continue:hover, #vy:hover {
+    background-color: rgb(200, 50, 20);
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    .amountp {
+        flex: 1 1 100%; /* One column on smaller screens */
+    }
+
+    .logo2 {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .border {
+        width: 100%;
+    }
+
+    .border img {
+        width: 150px; /* Adjust this value as needed */
+    }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <p id="logp">Free Fire [UID]</p>
+      <img id="topimg" src="https://play-lh.googleusercontent.com/4RvFMe4VmXWyrruxkfGMSBR-hGYsz8X-CK5rW-667wDAU-zuaxePgm_sXW-9YI-MrY15=s256-rw" alt="mainlogo">
+    </div>
+    <hr color="black">
+  </header>
+  <div class="slre">
+    <div class="one">
+      <p>1</p>
+    </div>
+    <div class="slmet">
+      <p>Recharge Amount</p>
+    </div>
+  </div>
+  <div class="amountli">
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount1" value="Option 1">
+        <label for="amount1" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">115<br>Diamond</p>
+            <p class="secp">৳75</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount2" value="Option 2">
+        <label for="amount2" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">240<br>Diamond</p>
+            <p class="secp">৳150</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount3" value="Option 3">
+        <label for="amount3" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">355<br>Diamond</p>
+            <p class="secp">৳230</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount4" value="Option 4">
+        <label for="amount4" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">505<br>Diamond</p>
+            <p class="secp">৳340</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount5" value="Option 5">
+        <label for="amount5" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">610<br>Diamond</p>
+            <p class="secp">৳390</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount6" value="Option 6">
+        <label for="amount6" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">850<br>Diamond</p>
+            <p class="secp">৳555</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount7" value="Option 7">
+        <label for="amount7" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">1090<br>Diamond</p>
+            <p class="secp">৳699</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount8" value="Option 8">
+        <label for="amount8" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">1240<br>Diamond</p>
+            <p class="secp">৳785</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount9" value="Option 9">
+        <label for="amount9" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">1720<br>Diamond</p>
+            <p class="secp">৳1100</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount10" value="Option 10">
+        <label for="amount10" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">2090<br>Diamond</p>
+            <p class="secp">৳1350</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount11" value="Option 11">
+        <label for="amount11" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">2530<br>Diamond</p>
+            <p class="secp">৳1560</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount12" value="Option 12">
+        <label for="amount12" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">5060<br>Diamond</p>
+            <p class="secp">৳3150</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount13" value="Option 13">
+        <label for="amount13" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">10120<br>Diamond</p>
+            <p class="secp">৳6330</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount14" value="Option 14">
+        <label for="amount14" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">Level Up<br>Pass</p>
+            <p class="secp">৳150</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="amount">
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount15" value="Option 15">
+        <label for="amount15" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">Weekly<br></p>
+            <p class="secp">৳150</p>
+          </div>
+        </label>
+      </div>
+      <div class="amountp">
+        <input type="radio" name="amount" id="amount16" value="Option 16">
+        <label for="amount16" style="display: flex; align-items: center; width: 100%;">
+          <div class="price">
+            <p class="firp">Monthly<br></p>
+            <p class="secp">৳730</p>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="cng">
+    <div class="slre">
+      <div class="one">
+        <p>2</p>
+      </div>
+      <div class="slmet">
+        <p>Account Info</p>
+        <hr>
+        <input id='in' type="number" placeholder="Player ID (UID)" required>
+      </div>
+    </div>
+    <div class="tracod">
+      <div class="slre">
+        <div class="one">
+          <p>3</p>
+        </div>
+        <div class="slmet">
+          <p>Instant Payment</p><br>
+          <div class="logo2">
+            <div class="border">
+                <input type="radio" name="payment" id="b" value="bk">
+                <label for="b">
+                    <img id="bkash" src="https://www.logo.wine/a/logo/BKash/BKash-bKash-Logo.wine.svg" alt="bKash Logo">
+                </label>
+            </div>
+            <div class="border">
+                <input type="radio" name="payment" id="n" value="ng">
+                <label for="n">
+                    <img id="nagad" src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png" alt="Nagad Image">
+                </label>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div class="alt">
+        <div class="ntf">
+          <p>Please fill all options</p>
+          <button class="ok-button" onclick="closeNotification()">OK</button>
+        </div>
+      </div>
+      <div class="bt">
+        <button id="continue">NEXT</button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer>
+    <div class="contact-info">
+      <a href="https://wa.me/+8801891707400" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+        <p>WhatsApp</p>
+      </a>
+      <div class="gmail-section">
+        <i class="far fa-envelope"></i>
+      </div>
+    </div>
+    <div class="opening-times">
+      Opening Times: 24/7
+    </div>
+    <div class="section-option">
+      <a>gtxtopup@gmail.com</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 GTX Topup. All rights reserved.
+    </div>
+  </footer>
+  <script>
+    document.getElementById('continue').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Check if an amount option is selected in the 'amount' section
+        var amountInputs = document.querySelectorAll('input[name="amount"]');
+        var amountSelected = false;
+        for (var i = 0; i < amountInputs.length; i++) {
+            if (amountInputs[i].checked) {
+                amountSelected = true;
+                break;
+            }
+        }
+
+        // Check if a payment method is selected in the 'logo2' section
+        var paymentInputs = document.querySelectorAll('input[name="payment"]');
+        var paymentSelected = false;
+        for (var i = 0; i < paymentInputs.length; i++) {
+            if (paymentInputs[i].checked) {
+                paymentSelected = true;
+                break;
+            }
+        }
+
+        // Check if all input fields are filled
+        var playerIdInput = document.getElementById('in');
+        var playerIdValue = playerIdInput.value.trim();
+
+        if (!amountSelected || !paymentSelected || playerIdValue === '') {
+            document.querySelector('.alt').style.display = 'block';
+            return;
+        }
+
+        // Proceed to the next step if all conditions are met
+        var selectedPaymentValue = null;
+        for (var i = 0; i < paymentInputs.length; i++) {
+            if (paymentInputs[i].checked) {
+                selectedPaymentValue = paymentInputs[i].value;
+                break;
+            }
+        }
+        if (selectedPaymentValue === 'bk') {
+            window.open('Bkash-pay.html', '_blank');
+        } else if (selectedPaymentValue === 'ng') {
+            window.open('Nagad-pay.html', '_blank');
+        } else {
+            alert('Invalid payment selection');
+        }
+    });
+
+    function closeNotification() {
+        // Hide the notification by setting its display property to none
+        document.querySelector('.alt').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Bkash Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: roboto;
+}
+
+/* Responsive Font Sizes */
+html {
+    font-size: 16px; /* Base font size */
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px; /* Even smaller font size for very small devices */
+    }
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 1rem;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+    width: 150px; /* Adjust this value as needed */
+}
+
+header p {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
+/* Image Section */
+.im {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.im img {
+    max-width: 25%;
+    height: auto;
+    width: 200px; /* Smaller image size */
+}
+
+/* Rules Section */
+.rules {
+    border: 2px solid cornflowerblue;
+    margin: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.rules ul {
+    margin-left: 1rem;
+}
+
+.rules ul li {
+    font-size: 1.5rem; /* Adjust font size for better readability */
+    margin-bottom: 1rem;
+}
+
+.rules ul li a {
+    color: gold;
+}
+
+/* Copy Button */
+#copyButton {
+    height: 50px;
+    width: 150px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white;
+    background-color: gray;
+    display: none; /* Hide the button initially */
+}
+
+#copyImage {
+    width: 100px; /* Adjust size for mobile */
+    height: auto;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Payment Section */
+.pay {
+    margin: 1rem;
+}
+
+#tran {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#re2 {
+    width: 100%;
+    height: 4rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 3px solid cornflowerblue;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list ul li {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.list ul li a {
+    color: gold;
+}
+
+/* Verify Button */
+#vy {
+    width: 80%; /* Set button width to 80% */
+    height: 4rem;
+    font-size: 1.5rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 1rem auto; /* Center the button */
+    cursor: pointer;
+    display: block; /* Ensure it behaves as a block element */
+}
+
+#vy:hover {
+    background-color: darkred;
+}
+
+/* Notification */
+.alt, .alt2, .alt3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    display: none;
+}
+
+.ntf, .ntf2, .ntf3 {
+    height: auto;
+    width: 90%;
+    max-width: 900px;
+    background-color: rgb(12, 185, 12);
+    border-radius: 40px;
+    padding: 1rem;
+}
+
+.ntf p, .ntf2 p, .ntf3 p {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ntf2 i, .ntf3 i {
+    margin-top: 1rem;
+    font-size: 3rem;
+}
+
+.ok-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    .im img {
+        width: 150px; /* Even smaller image for mobile */
+    }
+
+    .rules ul li {
+        font-size: 1.2rem; /* Smaller font size for mobile */
+    }
+
+    #re2 {
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+
+    #vy {
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+
+    .ntf, .ntf2, .ntf3 {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .ntf p, .ntf2 p, .ntf3 p {
+        font-size: 1.5rem;
+    }
+
+    .ntf2 i, .ntf3 i {
+        font-size: 2rem;
+    }
+
+    .ok-button {
+        font-size: 1.2rem;
+    }
+}
+  </style>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header>
+  Bkash Pay
+    <hr color="black">
+</header>
+  <div class="im">
+    <img id="bkash" src="https://www.logo.wine/a/logo/BKash/BKash-bKash-Logo.wine.svg" alt="bKash Logo">
+  </div>
+  <div class="pay">
+    <p id="tran">ট্রান্সজেকশন আইডি দিন</p>
+    <input id="re2" type="text" placeholder="ট্রান্সজেকশন আইডি দিন" required>
+    <div class="list">
+      <ul><hr>
+        <li>*247# ডায়াল করে আপনার Bkash মোবাইল মেনুতে যান অথবা Bkash অ্যাপে যান।</li><hr>
+        <li><a class="clr">"Send Money"</a> -এ ক্লিক করুন।</li><hr>
+        <li>প্রাপক নম্বর হিসেবে এই নম্বরটি লিখুনঃ <a class="clr">01743581539</a> <img id="copyImage" src="https://support.shapr3d.com/hc/article_attachments/9312545937436" alt="Copy Logo"></li><hr>
+        <li>নির্দিষ্ট পরিমানের টাকা সেন্ডমানি করুন।</li><hr>
+        <li>নিশ্চিত করতে এখন আপনার Bkash মোবাইল মেনু পিন লিখুন।</li><hr>
+        <li>সবকিছু ঠিক থাকলে, আপনি Bkash থেকে একটি নিশ্চিতকরণ বার্তা পাবেন।</li><hr>
+        <li id="lasli">এখন উপরের বক্সে আপনার<a class="clr"> Transaction ID</a> দিন এবং নিচের <a class="clr">VERIFY</a> বাটনে ক্লিক করুন।</li><hr>
+      </ul><hr>
+    </div>
+  </div>
+  <div class="bt">
+    <div class="alt">
+       <div class="ntf">
+            <p>Alert: <br><br>Transaction id must be filled</p>
+            <button class="ok-button" onclick="closeNotification()">OK</button>
+        </div>
+    </div>
+    <div class="alt2">
+       <div class="ntf2">
+         <i class="fa-regular fa-circle-check"></i>
+            <p>Copied To Clipboard</p>
+            <button class="ok-button" onclick="closeNotification()">OK</button>
+        </div>
+      </div>
+    <a href="error.html"><b><button id="vy">VERIFY</button></b></a>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br><br><br><br><br><br><br><br>
+  <script>
+  // Function to close notification div
+  function closeNotification() {
+    document.querySelector('.alt').style.display = 'none';
+  }
+
+  // Function to handle click on VERIFY button
+  document.getElementById('vy').addEventListener('click', function(event) {
+    var transactionId = document.getElementById('re2').value;
+    if (!transactionId.trim()) { // Check if input is empty
+      event.preventDefault(); // Prevent form submission
+      document.querySelector('.alt').style.display = 'block'; // Display notification
+    } else {
+      // Open a new page
+      window.location.href = 'Error.html'; // Change 'new_page.html' to the desired URL
+    }
+  });
+
+  // Function to handle click on Copy icon
+  document.getElementById('copyImage').addEventListener('click', function() {
+    var copyText = "01743581539"; // The number you want to copy
+    navigator.clipboard.writeText(copyText); // Copy to clipboard
+
+    // Display notification for 1 second
+    document.querySelector('.alt2').style.display = 'block';
+    setTimeout(function() {
+      document.querySelector('.alt2').style.display = 'none';
+    }, 1000);
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+</html>

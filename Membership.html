@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure responsiveness -->
+  <title>Membership</title>
+  <style>
+    /* General Reset */
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: roboto, sans-serif;
+      box-sizing: border-box;
+    }
+
+    /* Responsive Font Sizes */
+    html {
+      font-size: 16px; /* Base font size */
+    }
+
+    @media (max-width: 768px) {
+      html {
+        font-size: 14px; /* Smaller font size for tablets */
+      }
+    }
+
+    @media (max-width: 480px) {
+      html {
+        font-size: 12px; /* Even smaller font size for mobile */
+      }
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      background-color: rgb(225, 68, 24);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    #glogo {
+      height: 80px; /* Smaller logo for mobile */
+      width: auto;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    #logp {
+      font-size: 1.5rem; /* Smaller font size for mobile */
+      font-weight: bold;
+    }
+
+    #topimg {
+      height: 80px; /* Smaller image for mobile */
+      width: auto;
+      margin-left: 10px;
+    }
+
+    hr {
+      border: 1px solid black;
+      margin: 10px 0;
+    }
+
+    /* Main Content */
+    .slre {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .one {
+      background-color: rgb(225, 68, 24);
+      height: 50px; /* Smaller circle for mobile */
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .one p {
+      font-size: 1.5rem; /* Smaller font size for mobile */
+      color: whitesmoke;
+    }
+
+    .slmet p {
+      font-size: 1.2rem; /* Smaller font size for mobile */
+    }
+
+    .amountli {
+      margin: 10px;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .item {
+      margin-bottom: 10px;
+      font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 1.2rem; /* Smaller font size for mobile */
+      font-weight: bold;
+      color: green;
+    }
+
+    button {
+      padding: 5px 10px;
+      font-size: 1rem; /* Smaller font size for mobile */
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button.remove {
+      background-color: red;
+    }
+
+    /* Payment Section */
+    .logo2 {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .border {
+      border: 2px solid rgb(45, 9, 174);
+      margin: 5px;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center; /* Center align content */
+    }
+
+    .border:hover {
+      border: 2px solid rgb(11, 216, 38);
+    }
+
+    #bkash, #nagad {
+      width: 100px; /* Smaller images for mobile */
+      height: auto;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, purple, green);
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .contact-info a {
+      display: inline-block;
+      margin: 5px; /* Smaller margin for mobile */
+      padding: 10px 15px; /* Smaller padding for mobile */
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    /* Overlay (Alert) */
+    .alt {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      display: none;
+      z-index: 1000; /* Ensure it's on top of other elements */
+    }
+
+    .ntf {
+      padding: 20px;
+    }
+
+    .ok-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    /* Center the NEXT button */
+    .bt {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 20px 0; /* Add some margin for spacing */
+}
+
+/* Make the NEXT button smaller */
+#continue {
+  height: 60px; /* Reduced height */
+  width: 200px; /* Reduced width */
+  background-color: rgb(225, 68, 24);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem; /* Smaller font size */
+  cursor: pointer;
+}
+
+#continue:hover {
+  background-color: darkred; /* Change color on hover */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img id="topimg" src="https://staticg.sportskeeda.com/editor/2022/07/6dbea-16571712698499-1920.jpg" alt="mainlogo">
+    </div>
+    <hr color="black">
+  </header>
+
+  <div class="slre">
+    <div class="one">
+      <p>1</p>
+    </div>
+    <div class="slmet">
+      <p>Add To Cart</p>
+    </div>
+  </div>
+
+  <div class="amountli">
+    <div class="container">
+      <div class="item">
+        <span>Weekly - BDT 150</span> <br>
+        <span id="weeklyCountDisplay">0 selected</span>
+        <button onclick="addToCart(150, 'weekly')">Add</button>
+        <span id="weeklyCount">0</span>
+        <button class="remove" onclick="removeFromCart('weekly')">Remove</button>
+      </div>
+      <div class="item">
+        <span>Monthly - BDT 730</span> <br>
+        <span id="monthlyCountDisplay">0 selected</span>
+        <button onclick="addToCart(730, 'monthly')">Add</button>
+        <span id="monthlyCount">0</span>
+        <button class="remove" onclick="removeFromCart('monthly')">Remove</button>
+      </div>
+      <div class="item">
+        <span>Weekly Lite - BDT 50</span> <br>
+        <span id="weeklyLiteCountDisplay">0 selected</span>
+        <button onclick="addToCart(50, 'weeklyLite')">Add</button>
+        <span id="weeklyLiteCount">0</span>
+        <button class="remove" onclick="removeFromCart('weeklyLite')">Remove</button>
+      </div>
+      <div class="total">
+        <span id="selectedItems">0 items</span><br>
+        Total Price: <span id="totalPrice">0</span> BDT
+      </div>
+    </div>
+  </div>
+
+  <div class="cng">
+    <div class="slre">
+      <div class="one">
+        <p>2</p>
+      </div>
+      <div class="slmet">
+        <p>Account Info</p>
+        <hr>
+        <input id='in' type="number" placeholder="Player ID (UID)" required>
+      </div>
+    </div>
+
+    <div class="tracod">
+      <div class="slre">
+        <div class="one">
+          <p>3</p>
+        </div>
+        <div class="slmet">
+          <p>Instant Payment</p><br>
+          <div class="logo2">
+            <div class="border"><label><input type="radio" name="payment" id="b" value="bk"><img id="bkash" src="https://www.logo.wine/a/logo/BKash/BKash-bKash-Logo.wine.svg" alt="bKash Logo"></label></div>
+            <div class="border"><label><input type="radio" name="payment" id="n" value="ng"><img id="nagad" src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png" alt="Nagad Image"></label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered NEXT Button -->
+    <div class="bt">
+      <button id="continue">NEXT</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="contact-info">
+      <a href="https://wa.me/+8801891707400" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+        <p>WhatsApp</p>
+      </a>
+      <div class="gmail-section">
+        <i class="far fa-envelope"></i>
+        <p>gtxtopup@gmail.com</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 GTX Topup. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Overlay (Alert) -->
+  <div class="alt">
+    <div class="ntf">
+      <p>Alert: <br><br>Please fill all options</p>
+      <button class="ok-button" onclick="closeNotification()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    let totalPrice = 0;
+let totalItems = 0;
+let weeklyCount = 0;
+let monthlyCount = 0;
+let weeklyLiteCount = 0;
+
+function addToCart(price, itemId) {
+    if ((itemId === 'weekly' && weeklyCount < 5) || 
+        (itemId === 'monthly' && monthlyCount < 5) || 
+        (itemId === 'weeklyLite' && weeklyLiteCount < 5)) {
+        if (itemId === 'weekly') {
+            weeklyCount++;
+            totalItems++;
+            totalPrice += price;
+            updateCount('weekly');
+        } else if (itemId === 'monthly') {
+            monthlyCount++;
+            totalItems++;
+            totalPrice += price;
+            updateCount('monthly');
+        } else if (itemId === 'weeklyLite') {
+            weeklyLiteCount++;
+            totalItems++;
+            totalPrice += price;
+            updateCount('weeklyLite');
+        }
+        updateTotal();
+    } else {
+        alert("You can only select up to 5 items for each.");
+    }
+}
+
+function removeFromCart(itemId) {
+    if (itemId === 'weekly' && weeklyCount > 0) {
+        weeklyCount--;
+        totalItems--;
+        totalPrice -= 150;
+        updateCount('weekly');
+    } else if (itemId === 'monthly' && monthlyCount > 0) {
+        monthlyCount--;
+        totalItems--;
+        totalPrice -= 730;
+        updateCount('monthly');
+    } else if (itemId === 'weeklyLite' && weeklyLiteCount > 0) {
+        weeklyLiteCount--;
+        totalItems--;
+        totalPrice -= 50;
+        updateCount('weeklyLite');
+    }
+    updateTotal();
+}
+
+function updateCount(itemId) {
+    if (itemId === 'weekly') {
+        document.getElementById('weeklyCount').innerText = weeklyCount;
+        document.getElementById('weeklyCountDisplay').innerText = weeklyCount + " selected";
+    } else if (itemId === 'monthly') {
+        document.getElementById('monthlyCount').innerText = monthlyCount;
+        document.getElementById('monthlyCountDisplay').innerText = monthlyCount + " selected";
+    } else if (itemId === 'weeklyLite') {
+        document.getElementById('weeklyLiteCount').innerText = weeklyLiteCount;
+        document.getElementById('weeklyLiteCountDisplay').innerText = weeklyLiteCount + " selected";
+    }
+    updateSelectedItems();
+}
+
+function updateSelectedItems() {
+    let selected = '';
+    if (weeklyCount > 0) {
+        selected += weeklyCount + " Weekly";
+    }
+    if (monthlyCount > 0) {
+        if (selected !== '') {
+            selected += " + ";
+        }
+        selected += monthlyCount + " Monthly";
+    }
+    if (weeklyLiteCount > 0) {
+        if (selected !== '') {
+            selected += " + ";
+        }
+        selected += weeklyLiteCount + " Weekly Lite";
+    }
+    document.getElementById('selectedItems').innerText = selected + " selected";
+}
+
+function updateTotal() {
+    document.getElementById('totalPrice').innerText = totalPrice;
+}
+
+// Logic for the "Next" button with custom alert
+document.getElementById('continue').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    // Check if at least one product is selected
+    if (totalItems === 0) {
+        showCustomAlert("Please select at least one product.");
+        return;
+    }
+
+    // Check if Player ID (UID) is filled
+    var playerIdInput = document.getElementById('in');
+    if (playerIdInput.value.trim() === '') {
+        showCustomAlert("Please enter your Player ID (UID).");
+        return;
+    }
+
+    // Check if a payment option is selected
+    var paymentInputs = document.querySelectorAll('input[name="payment"]');
+    var paymentSelected = false;
+    var selectedPaymentValue = null;
+    for (var i = 0; i < paymentInputs.length; i++) {
+        if (paymentInputs[i].checked) {
+            paymentSelected = true;
+            selectedPaymentValue = paymentInputs[i].value;
+            break;
+        }
+    }
+
+    if (!paymentSelected) {
+        showCustomAlert("Please select a payment method.");
+        return;
+    }
+
+    // Redirect to the appropriate payment page
+    if (selectedPaymentValue === 'bk') {
+        window.open('Bkash-pay.html', '_blank');
+    } else if (selectedPaymentValue === 'ng') {
+        window.open('Nagad-pay.html', '_blank');
+    } else {
+        showCustomAlert("Invalid payment selection.");
+    }
+});
+
+// Function to show the custom alert
+function showCustomAlert(message) {
+    const alertDiv = document.querySelector('.alt');
+    const alertMessage = alertDiv.querySelector('p');
+    alertMessage.innerText = "Alert: " + message;
+    alertDiv.style.display = 'block';
+}
+
+// Function to close the custom alert
+function closeNotification() {
+    document.querySelector('.alt').style.display = 'none';
+}
+
+// Close the alert when the OK button is clicked
+document.querySelector('.ok-button').addEventListener('click', closeNotification);
+</script>
+</body>
+</html>
