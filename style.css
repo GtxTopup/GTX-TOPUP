@@ -269,11 +269,6 @@ a:hover {
   font-size: 3rem;
   color: red;
 }
-#vy:hover{
-  height: 90px;
-  width: 540px;
-  border: 3px solid blue;
-}
 .tid{
   text-align: center;
   margin-top: 25px;
